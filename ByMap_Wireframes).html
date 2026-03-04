@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ByMap — Wireframes</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:52px 56px;min-width:1200px}
+
+/* ─── SECTION ─── */
+.section{margin-bottom:64px}
+.slbl{font-size:8.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#aaa;margin-bottom:20px;padding-bottom:6px;border-bottom:1px solid #d0d2d6}
+
+/* ─── ROW ─── */
+.row{
+  display:flex;
+  align-items:flex-start;
+  position:relative;  /* SVG overlay */
+}
+/* each phone slot = phone width + connector gap */
+.pw{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  flex-shrink:0;
+  width:148px;
+  margin-right:44px;  /* gap for the connector lines */
+}
+.pw:last-child{margin-right:0}
+.pn{font-size:9px;color:#bbb;margin-bottom:5px;padding-left:2px;letter-spacing:.3px}
+
+/* ─── PHONE FRAME ─── */
+.phone{
+  width:148px;
+  background:#fff;
+  border-radius:20px;
+  border:1.5px solid #c8cace;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 1px 5px rgba(0,0,0,.07);
+  min-height:290px;
+}
+
+/* ─── SVG OVERLAY (one per row) ─── */
+.row-svg{
+  position:absolute;
+  top:0;left:0;
+  pointer-events:none;
+  z-index:10;
+  overflow:visible;
+}
+
+/* ─── UI COMPONENTS ─── */
+.sb{height:11px;background:#f4f5f7;border-bottom:1px solid #e8eaed;display:flex;align-items:center;justify-content:space-between;padding:0 9px;font-size:5.5px;color:#ccc;flex-shrink:0}
+.tb{padding:4px 7px;border-bottom:1px solid #eaebee;display:flex;align-items:center;gap:4px;flex-shrink:0;background:#fff}
+.sp{flex:1;height:17px;background:#f0f2f5;border-radius:9px;border:1px solid #dde0e5;display:flex;align-items:center;padding:0 6px;gap:3px}
+.sp span{font-size:5.5px;color:#bbb}
+.si{width:6px;height:6px;border:1px solid #bbb;border-radius:50%;position:relative;flex-shrink:0}
+.si::after{content:'';position:absolute;bottom:-2px;right:-2px;width:2px;height:1px;background:#bbb;transform:rotate(45deg)}
+.bk{font-size:10px;color:#666;flex-shrink:0;line-height:1}
+.hbg{display:flex;flex-direction:column;gap:2px;flex-shrink:0}
+.hbg span{display:block;width:12px;height:1.5px;background:#666;border-radius:1px}
+.body{flex:1;padding:6px;display:flex;flex-direction:column;gap:4px}
+.ph{background:#dce8f5;border-radius:5px;border:1px solid #c5d8ee;display:flex;align-items:center;justify-content:center;font-size:5.5px;color:#8ab3d8;text-align:center;flex-shrink:0}
+.phmap{flex:1;min-height:80px;position:relative;background:repeating-linear-gradient(45deg,#dce8f5,#dce8f5 4px,#cfdff0 4px,#cfdff0 8px)}
+.phimg{height:50px}.phmd{height:32px}.phsm{height:20px}.phxs{height:13px}
+.ln{height:4px;background:#dde0e5;border-radius:3px;flex-shrink:0}
+.lnd{background:#b5bac1}
+.w100{width:100%}.w80{width:80%}.w70{width:70%}.w60{width:60%}.w50{width:50%}.w40{width:40%}
+.btn{height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:6.5px;font-weight:600;flex-shrink:0;position:relative}
+.bf{background:#1a1a1a;color:#fff}
+.bo{border:1.5px solid #1a1a1a;color:#1a1a1a;background:#fff}
+.bl{background:#f0f2f5;color:#666;border:1px solid #dde0e5}
+.bd{background:#eaebee;color:#ccc;border:1px solid #dde0e5}
+.bx{border:1.5px dashed #ccc;color:#ccc;background:#fafafa}
+.r{display:flex;gap:4px}.r>*{flex:1}
+.card{border:1px solid #dde0e5;border-radius:5px;padding:4px 5px;display:flex;flex-direction:column;gap:3px;background:#fff;flex-shrink:0}
+.cs{border-left:2.5px solid #7aa3cc}
+.ck{border-color:#1a1a1a}
+.tabs{display:flex;border:1px solid #c8cace;border-radius:5px;overflow:hidden;flex-shrink:0}
+.tab{flex:1;height:17px;display:flex;align-items:center;justify-content:center;font-size:6px;border-right:1px solid #c8cace}
+.tab:last-child{border-right:none}
+.ton{background:#1a1a1a;color:#fff}.tof{color:#999;background:#fff}
+.fb{border-top:1px solid #eaebee;padding:5px 6px;flex-shrink:0;display:flex;flex-direction:column;gap:3px;background:#fff}
+.fbt{font-size:6.5px;font-weight:700;text-align:center;color:#222}
+.bnav{border-top:1px solid #eaebee;display:flex;align-items:center;justify-content:space-around;padding:4px;flex-shrink:0;background:#fff}
+.ni{display:flex;flex-direction:column;align-items:center;gap:1px}
+.nic{width:13px;height:13px;border:1.5px solid #999;border-radius:3px}
+.nr{border-radius:50%}.non{background:#1a1a1a;border-color:#1a1a1a}
+.nil{font-size:5px;color:#999}
+.fab{position:absolute;bottom:34px;right:7px;width:22px;height:22px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;line-height:1;z-index:2;box-shadow:0 2px 5px rgba(0,0,0,.2)}
+.stp{display:flex;gap:3px;justify-content:center;flex-shrink:0}
+.sd{width:16px;height:3px;border-radius:2px;background:#dde0e5}
+.so{background:#1a1a1a}
+.tgl{width:24px;height:12px;border-radius:6px;background:#dde0e5;border:1px solid #c8cace;display:flex;align-items:center;padding:1px;flex-shrink:0}
+.tgd{width:9px;height:9px;background:#fff;border-radius:50%;border:1px solid #c8cace}
+.bdg{display:inline-flex;align-items:center;justify-content:center;padding:1px 4px;border-radius:3px;font-size:5px;font-weight:700;flex-shrink:0}
+.bdk{background:#1a1a1a;color:#fff}
+.bbl{background:#dce8f5;color:#4a7ab0;border:1px solid #b0ccec}
+.otp{display:flex;gap:2px;justify-content:center}
+.ob{width:15px;height:18px;border:1.5px solid #c8cace;border-radius:3px}
+.oo{border-color:#1a1a1a}
+.dv{height:1px;background:#eaebee;flex-shrink:0}
+.sh{font-size:6.5px;font-weight:700;color:#333;text-align:center;padding:3px 0;border-bottom:1px solid #eaebee;flex-shrink:0}
+.t{font-size:5.5px;color:#bbb}
+.td{color:#555}.tb2{font-weight:700;color:#222;font-size:6.5px}.tc{text-align:center}.ti{font-style:italic}
+.crumb{font-size:5px;color:#bbb;flex-shrink:0}
+.zr{display:flex;align-items:center;justify-content:center;gap:4px;flex-shrink:0}
+.zb{border:1px solid #c8cace;border-radius:3px;padding:2px 5px;font-size:5.5px;font-weight:600;color:#333;background:#fff}
+.zp{border-style:dashed;color:#ccc;background:#f9f9f9}
+.za{font-size:7px;color:#999}
+.ml{position:absolute;bottom:3px;right:4px;font-size:4.5px;color:#9ab;font-style:italic}
+.pin{position:absolute;width:7px;height:7px;background:#1a1a1a;border-radius:50% 50% 50% 0;transform:rotate(-45deg)}
+.pl{position:absolute;background:rgba(255,255,255,.9);border:1px solid #c8cace;border-radius:2px;padding:1px 3px;font-size:4.5px;color:#333;white-space:nowrap}
+.co{position:absolute;height:1.5px;background:#555;transform-origin:left center}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3px;flex-shrink:0}
+.gc{border:1.5px solid #c8cace;border-radius:5px;padding:5px 3px;display:flex;flex-direction:column;align-items:center;gap:3px}
+.gs{border-color:#1a1a1a;background:#f5f5f5}
+.gi{width:16px;height:16px;background:#dce8f5;border-radius:3px}
+.dw{display:flex;flex:1;overflow:hidden}
+.dov{flex:1;background:rgba(0,0,0,.03)}
+.dr{width:90px;background:#fff;border-left:1px solid #e0e2e5;display:flex;flex-direction:column;padding:7px 6px;gap:6px}
+.di{font-size:6px;color:#333;display:flex;align-items:center;gap:3px}
+.dc{width:7px;height:7px;border:1px solid #ccc;border-radius:2px;flex-shrink:0}
+.drd{color:#cc3333}
+.ds{height:1px;background:#eee}
+.scc{width:32px;height:32px;border-radius:50%;border:2px solid #1a1a1a;display:flex;align-items:center;justify-content:center;font-size:14px;align-self:center}
+.dr2{display:flex;align-items:center;justify-content:center;gap:4px;background:#f5f5f5;border:1px solid #e5e5e5;border-radius:4px;padding:3px;flex-shrink:0}
+.inp{height:17px;border:1px solid #c8cace;border-radius:4px;display:flex;align-items:center;padding:0 6px;font-size:6px;color:#bbb;flex-shrink:0}
+.ia{border-color:#888;color:#555}
+
+/* cross-flow note pill */
+.xnote{
+  display:inline-block;
+  font-size:5px;font-weight:600;color:#4a7ab0;
+  border:1px solid #b0ccec;border-radius:3px;
+  padding:1px 4px;background:#f0f5ff;
+  margin-top:3px;text-align:center;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     FLOW 1 — LAUNCH · HOME · MENU
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 1 — Launch · Home · Menu</div>
+<div class="row" id="r1">
+<svg class="row-svg" id="s1"></svg>
+
+<!-- 000 -->
+<div class="pw"><div class="pn">000</div>
+<div class="phone" id="p000">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:9px">
+    <div style="width:40px;height:40px;border:2px solid #1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center"><div style="width:20px;height:20px;border-radius:50%;border:2px solid #1a1a1a"></div></div>
+    <div class="t tb2 tc">ByMap</div>
+    <div class="t tc">Loading...</div>
+    <div style="width:55px;height:3px;background:#e8eaed;border-radius:2px;overflow:hidden"><div style="width:60%;height:100%;background:#1a1a1a;border-radius:2px"></div></div>
+  </div>
+</div></div>
+
+<!-- 001 -->
+<div class="pw"><div class="pn">001</div>
+<div class="phone" id="p001">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="q001s" class="sp"><div class="si"></div><span>Search zone, city or ad...</span></div>
+    <div id="q001h" class="hbg"><span></span><span></span><span></span></div>
+  </div>
+  <div class="body">
+    <div class="ph phmap" style="flex:1">
+      <div class="pin" style="top:42%;left:44%"></div>
+      <div class="pl" style="top:22%;left:35%">Tunis</div>
+      <div class="ml">3D Globe · drag</div>
+    </div>
+  </div>
+  <div class="fb">
+    <div class="fbt">Tunis — Ariana</div>
+    <div class="r">
+      <div id="q001l" class="btn bf">LOCAL</div>
+      <div id="q001d" class="btn bo">DUO</div>
+    </div>
+  </div>
+</div>
+<div class="xnote">DUO → see Flow 2 (005)</div>
+</div>
+
+<!-- 002 -->
+<div class="pw"><div class="pn">002</div>
+<div class="phone" id="p002">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="dw">
+    <div class="dov"></div>
+    <div class="dr">
+      <div class="t tb2">Menu</div><div class="ds"></div>
+      <div id="q002g" class="di"><div class="dc"></div>Log In / Sign Up</div>
+      <div class="di"><div class="dc"></div>Language</div>
+      <div class="ds"></div>
+      <div class="t" style="font-size:4.5px;color:#ccc">— logged in —</div>
+      <div class="di"><div class="dc"></div>My Ads</div>
+      <div class="di"><div class="dc"></div>Notifications</div>
+      <div class="di drd"><div class="dc" style="border-color:#cc3333"></div>Log Out</div>
+    </div>
+  </div>
+</div>
+<div class="xnote">Log In → see Flow 3 (100)</div>
+</div>
+
+<!-- 003 -->
+<div class="pw"><div class="pn">003</div>
+<div class="phone" id="p003">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="q003b" class="bk">←</div>
+    <div id="q003s" class="sp"><div class="si"></div><span>Search...</span></div>
+  </div>
+  <div class="sh">LOCAL ADS</div>
+  <div class="body" style="gap:3px;overflow:hidden">
+    <div id="q003c" class="card"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div></div>
+    <div class="card"><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5.5px">text slide</div><div class="ln w40"></div></div>
+    <div class="card"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div></div>
+  </div>
+  <div id="q003f" class="fab">+</div>
+  <div class="bnav">
+    <div class="ni"><div class="nic nr non"></div><div class="nil">Globe</div></div>
+    <div class="ni"><div class="nic"></div><div class="nil">Search</div></div>
+    <div class="ni"><div class="nic nr"></div><div class="nil">Profile</div></div>
+  </div>
+</div>
+<div class="xnote">FAB → Flow 3 (login) or Flow 4</div>
+<div class="xnote" style="margin-top:2px">Search → Flow 2 (006)</div>
+</div>
+
+<!-- 004 -->
+<div class="pw"><div class="pn">004</div>
+<div class="phone" id="p004">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div class="sp"><div class="si"></div><span>Search...</span></div></div>
+  <div class="body">
+    <div class="ph phimg"></div>
+    <div class="ln lnd w80"></div><div class="ln w60"></div>
+    <div style="display:flex;gap:3px;align-items:center"><div class="bdg bbl">Zone</div><div class="ln w40"></div></div>
+    <div class="ph phsm" style="background:#f9f9f9;border-color:#eaebee"></div>
+    <div class="ln w100"></div><div class="ln w80"></div>
+  </div>
+  <div class="fb" style="padding:4px 6px"><div class="btn bf">CONTACT ADVERTISER</div></div>
+</div></div>
+
+</div><!-- /row -->
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 2 — DUO FEED · SEARCH · MAPS
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 2 — DUO Feed · Search · Zone Navigation</div>
+<div class="row" id="r2">
+<svg class="row-svg" id="s2"></svg>
+
+<!-- 005 -->
+<div class="pw"><div class="pn">005</div>
+<div class="phone" id="p005">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div class="bk">←</div>
+    <div id="q005s" class="sp"><div class="si"></div><span>Search...</span></div>
+  </div>
+  <div class="sh">DUO ADS</div>
+  <div class="body" style="gap:3px;overflow:hidden">
+    <div id="q005c" class="card cs"><div style="display:flex;gap:3px;align-items:center"><div class="bdg bdk">DUO</div><div class="ln lnd w60" style="flex:1"></div></div><div style="display:flex;gap:3px"><div class="t td">Tunis</div><div class="t">⟷</div><div class="t td">Sfax</div></div><div class="ln w40"></div></div>
+    <div class="card cs"><div style="display:flex;gap:3px;align-items:center"><div class="bdg bdk">DUO</div><div class="ln lnd w50" style="flex:1"></div></div><div style="display:flex;gap:3px"><div class="t td">Ariana</div><div class="t">⟷</div><div class="t td">La Marsa</div></div><div class="ph phsm"></div></div>
+    <div class="card cs"><div style="display:flex;gap:3px;align-items:center"><div class="bdg bdk">DUO</div><div class="ln lnd w60" style="flex:1"></div></div><div style="display:flex;gap:3px"><div class="t td">Menzah</div><div class="t">⟷</div><div class="t td">Lac 2</div></div></div>
+  </div>
+  <div id="q005f" class="fab">+</div>
+  <div class="bnav">
+    <div class="ni"><div class="nic nr non"></div><div class="nil">Globe</div></div>
+    <div class="ni"><div class="nic"></div><div class="nil">Search</div></div>
+    <div class="ni"><div class="nic nr"></div><div class="nil">Profile</div></div>
+  </div>
+</div>
+<div class="xnote">FAB → Flow 5 (300)</div>
+</div>
+
+<!-- 006 -->
+<div class="pw"><div class="pn">006</div>
+<div class="phone" id="p006">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div class="sp" style="border-color:#999"><div class="si"></div><span style="color:#666">keyword / zone</span></div></div>
+  <div class="body" style="gap:3px">
+    <div style="display:flex;gap:3px;flex-wrap:wrap">
+      <div class="btn bf" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">All</div>
+      <div class="btn bl" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">Jobs</div>
+      <div class="btn bl" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">Services</div>
+      <div class="btn bl" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">DUO</div>
+    </div>
+    <div class="dv"></div>
+    <div id="q006r" class="card" style="flex-direction:row;align-items:center;gap:3px"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="ln lnd w80"></div><div class="ln w50"></div></div><div class="bdg bbl">Ariana</div></div>
+    <div class="card" style="flex-direction:row;align-items:center;gap:3px"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="ln lnd" style="width:70%"></div><div class="ln w40"></div></div><div class="bdg bbl">Tunis</div></div>
+    <div class="card" style="flex-direction:row;align-items:center;gap:3px"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="ln lnd w80"></div><div class="ln w50"></div></div><div class="bdg bbl">Sfax</div></div>
+  </div>
+</div>
+<div class="xnote">tap result → Ad Detail (004)</div>
+</div>
+
+<!-- 007 -->
+<div class="pw"><div class="pn">007</div>
+<div class="phone" id="p007">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q007b" class="bk">←</div><div class="sp"><div class="si"></div><span>Search...</span></div></div>
+  <div class="body">
+    <div class="crumb">Tunisia &gt; Tunis</div>
+    <div class="ph phmap" style="flex:1;position:relative">
+      <div style="position:absolute;top:18%;left:12%;width:30%;height:26%;border:1px solid #7aa3cc;border-radius:2px;background:rgba(220,232,245,.4)"></div>
+      <div style="position:absolute;top:44%;left:32%;width:36%;height:28%;border:1px solid #7aa3cc;border-radius:2px;background:rgba(220,232,245,.4)"></div>
+      <div style="position:absolute;top:16%;left:50%;width:28%;height:30%;border:1px solid #7aa3cc;border-radius:2px;background:rgba(220,232,245,.4)"></div>
+      <div class="ml">tap delegation</div>
+    </div>
+  </div>
+  <div class="fb">
+    <div class="fbt">Tunis Governorate</div>
+    <div class="r"><div id="q007l" class="btn bf">LOCAL</div><div id="q007d" class="btn bo">DUO</div></div>
+  </div>
+</div>
+<div class="xnote">LOCAL → Feed (003) &nbsp;·&nbsp; DUO → Feed (005)</div>
+</div>
+
+<!-- 008 -->
+<div class="pw"><div class="pn">008</div>
+<div class="phone" id="p008">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q008b" class="bk">←</div><div class="sp"><div class="si"></div><span>Search...</span></div></div>
+  <div class="body">
+    <div class="crumb">Tunisia &gt; Tunis &gt; Ariana</div>
+    <div class="ph phmap" style="flex:1">
+      <div class="pin" style="top:42%;left:44%"></div>
+      <div style="position:absolute;inset:7px;border:2px dashed #7aa3cc;border-radius:3px;opacity:.6"></div>
+      <div class="ml">zone boundary</div>
+    </div>
+  </div>
+  <div class="fb">
+    <div class="fbt">Ariana</div>
+    <div class="r"><div id="q008l" class="btn bf">LOCAL</div><div id="q008d" class="btn bo">DUO</div></div>
+  </div>
+</div>
+<div class="xnote">LOCAL → Feed (003) &nbsp;·&nbsp; DUO → Feed (005)</div>
+</div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 3 — AUTH
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 3 — Authentication &nbsp;·&nbsp; Triggered by: FAB (guest) or Menu → Log In</div>
+<div class="row" id="r3">
+<svg class="row-svg" id="s3"></svg>
+
+<!-- 100 -->
+<div class="pw"><div class="pn">100</div>
+<div class="phone" id="p100">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div class="sp"><div class="si"></div><span>Search...</span></div></div>
+  <div class="body" style="gap:4px">
+    <div class="t tb2 tc" style="padding:3px 0">ByMap</div>
+    <div class="tabs"><div class="tab ton">Log In</div><div id="q100t" class="tab tof">Sign Up</div></div>
+    <div class="inp">Email address</div>
+    <div class="t tc" style="color:#ddd;font-size:5px">— or —</div>
+    <div class="inp">Phone number</div>
+    <div class="inp">Password</div>
+    <div id="q100l" class="btn bf">LOG IN</div>
+    <div class="dv"></div>
+    <div class="r">
+      <div id="q100g" class="btn bl" style="font-size:5.5px">G Google</div>
+      <div class="btn bl" style="font-size:5.5px">Apple</div>
+    </div>
+  </div>
+</div>
+<div class="xnote">LOG IN success → Flow 4 (200)</div>
+</div>
+
+<!-- 101 -->
+<div class="pw"><div class="pn">101</div>
+<div class="phone" id="p101">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div class="sp"><div class="si"></div><span>Search...</span></div></div>
+  <div class="body" style="gap:4px">
+    <div class="tabs"><div class="tab tof">Log In</div><div class="tab ton">Sign Up</div></div>
+    <div class="inp">Email address</div>
+    <div class="inp">Phone [+216 ▼]</div>
+    <div class="inp">Password</div>
+    <div class="inp">Confirm password</div>
+    <div id="q101c" class="btn bf">CREATE ACCOUNT</div>
+    <div class="dv"></div>
+    <div class="r"><div class="btn bl" style="font-size:5.5px">G Google</div><div class="btn bl" style="font-size:5.5px">Apple</div></div>
+  </div>
+</div></div>
+
+<!-- 102 -->
+<div class="pw"><div class="pn">102</div>
+<div class="phone" id="p102">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Verify Phone</div></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:9px">
+    <div class="ln w100" style="align-self:stretch"></div>
+    <div class="ln" style="align-self:stretch;width:70%"></div>
+    <div class="otp"><div class="ob oo"></div><div class="ob oo"></div><div class="ob oo"></div><div class="ob"></div><div class="ob"></div><div class="ob"></div></div>
+    <div class="t tc" style="color:#ccc">Resend in 30s</div>
+    <div id="q102v" class="btn bf" style="width:100%">VERIFY</div>
+  </div>
+</div>
+<div class="xnote">Verified → Flow 4 (200)</div>
+</div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 4 — CREATE AD (NORMAL)
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 4 — Create Ad · Normal &nbsp;·&nbsp; Entry: FAB (logged in) · Step 2 DUO toggle → Flow 5</div>
+<div class="row" id="r4">
+<svg class="row-svg" id="s4"></svg>
+
+<!-- 200 -->
+<div class="pw"><div class="pn">200</div>
+<div class="phone" id="p200">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">✕</div><div class="sp"><div class="si"></div><span>Search zone...</span></div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div></div>
+    <div class="t tc td">Step 1 — Select Zone</div>
+    <div class="ph phmap" style="flex:1"><div class="pin" style="top:42%;left:44%"></div><div class="pl" style="top:25%;left:38%">Ariana ✓</div><div class="ml">zone selected</div></div>
+    <div class="r"><div class="btn bl" style="font-size:5.5px">Ariana</div><div class="btn bl" style="font-size:5.5px">Lac 2</div><div class="btn bl" style="font-size:5.5px">Menzah</div></div>
+  </div>
+  <div class="fb"><div id="q200n" class="btn bf">Next: Choose Type →</div></div>
+</div></div>
+
+<!-- 201 -->
+<div class="pw"><div class="pn">201</div>
+<div class="phone" id="p201">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q201b" class="bk">←</div><div style="flex:1;font-size:6px;font-weight:700;text-align:center">Step 2 — Type</div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd so"></div><div class="sd"></div><div class="sd"></div></div>
+    <div class="g2">
+      <div class="gc gs"><div class="gi"></div><div class="t td" style="font-size:5.5px">Text only</div></div>
+      <div class="gc"><div class="gi"></div><div class="t" style="font-size:5.5px">Text+Photo</div></div>
+      <div class="gc"><div class="gi"></div><div class="t" style="font-size:5.5px">Text+Video</div></div>
+      <div class="gc"><div class="gi" style="background:#ffe0e0"></div><div class="t" style="font-size:5.5px">Live</div></div>
+    </div>
+    <div class="dv"></div>
+    <div style="display:flex;align-items:center;gap:4px">
+      <div id="q201g" class="tgl"><div class="tgd"></div></div>
+      <div class="t td" style="font-size:5.5px">Enable DUO mode</div>
+    </div>
+    <div class="btn bx" style="height:14px;font-size:5px">Zone B selector — when DUO ON</div>
+  </div>
+  <div class="fb"><div id="q201n" class="btn bf">Next: Write Content →</div></div>
+</div>
+<div class="xnote">DUO toggle → Flow 5 (300)</div>
+</div>
+
+<!-- 202 -->
+<div class="pw"><div class="pn">202</div>
+<div class="phone" id="p202">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q202b" class="bk">←</div><div style="flex:1;font-size:6px;font-weight:700;text-align:center">Step 3 — Content</div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div><div class="sd"></div></div>
+    <div class="inp ia">Title * (required)</div>
+    <div style="height:32px;border:1px solid #c8cace;border-radius:4px;padding:3px 6px;font-size:5.5px;color:#ccc">Description...</div>
+    <div class="inp">✓ Contact*</div>
+    <div class="ph phsm" style="border-style:dashed;background:#f9f9f9;color:#ccc">Add photo / video</div>
+  </div>
+  <div class="fb"><div id="q202n" class="btn bf">Next: Preview →</div></div>
+</div></div>
+
+<!-- 203 -->
+<div class="pw"><div class="pn">203</div>
+<div class="phone" id="p203">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q203b" class="bk">←</div><div style="flex:1;font-size:6px;font-weight:700;text-align:center">Step 4 — Preview</div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div></div>
+    <div class="card ck"><div class="ln lnd w80"></div><div class="ph phmd"></div><div style="display:flex;gap:3px"><div class="bdg bbl">Ariana</div><div class="ln w40"></div></div></div>
+    <div class="t tc ti" style="font-size:4.5px">⏱ Expires in 24h</div>
+    <div id="q203p" class="btn bf">PUBLISH NOW</div>
+    <div class="t tc" style="text-decoration:underline;font-size:5px">Save as draft</div>
+  </div>
+</div></div>
+
+<!-- 204 -->
+<div class="pw"><div class="pn">204</div>
+<div class="phone" id="p204">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:7px">
+    <div class="scc">✓</div>
+    <div class="t tb2 tc">Ad is live!</div>
+    <div class="t tc">Visible 24h · Ariana</div>
+    <div class="card" style="width:100%"><div class="ln lnd w80"></div><div style="display:flex;gap:3px"><div class="bdg bbl">Ariana</div><div class="t">just now</div></div></div>
+    <div id="q204v" class="btn bo" style="width:100%">VIEW MY AD</div>
+    <div id="q204a" class="btn bf" style="width:100%">+ CREATE ANOTHER</div>
+  </div>
+</div>
+<div class="xnote">VIEW → Ad Detail (004)</div>
+<div class="xnote" style="margin-top:2px">CREATE ANOTHER → back to 200</div>
+</div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 5 — CREATE DUO AD
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 5 — Create DUO Ad &nbsp;·&nbsp; Entry: FAB on DUO feed · or DUO toggle in Flow 4</div>
+<div class="row" id="r5">
+<svg class="row-svg" id="s5"></svg>
+
+<!-- 300 -->
+<div class="pw"><div class="pn">300</div>
+<div class="phone" id="p300">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">✕</div><div class="sp"><div class="si"></div><span>Search Zone A...</span></div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div></div>
+    <div class="t tc td">DUO 1/5 — Select Zone A</div>
+    <div class="ph phmap" style="flex:1"><div class="pin" style="top:42%;left:38%"></div><div class="pl" style="top:22%;left:30%">A: ?</div><div class="ml">tap to pin Zone A</div></div>
+    <div class="r"><div class="btn bl" style="font-size:5.5px">Ariana</div><div class="btn bl" style="font-size:5.5px">Tunis</div><div class="btn bl" style="font-size:5.5px">Sfax</div></div>
+  </div>
+  <div class="fb"><div id="q300n" class="btn bf">Next: Zone B →</div></div>
+</div></div>
+
+<!-- 301 -->
+<div class="pw"><div class="pn">301</div>
+<div class="phone" id="p301">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q301b" class="bk">←</div><div class="sp"><div class="si"></div><span>Search Zone B...</span></div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd so"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div></div>
+    <div class="t tc td">DUO 2/5 — Select Zone B</div>
+    <div class="ph phmap" style="flex:1;position:relative"><div class="pin" style="top:22%;left:15%"></div><div class="pl" style="top:10%;left:5%">A: Ariana</div><div style="position:absolute;top:52%;left:60%;width:8px;height:8px;border:2px dashed #bbb;border-radius:50%"></div><div class="ml">tap Zone B</div></div>
+    <div class="zr"><div class="zb">A: Ariana</div><div class="za">⟷</div><div class="zb zp">B: ?</div></div>
+  </div>
+  <div class="fb"><div id="q301n" class="btn bf">Next: Corridor →</div></div>
+</div></div>
+
+<!-- 302 -->
+<div class="pw"><div class="pn">302</div>
+<div class="phone" id="p302">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q302b" class="bk">←</div><div style="flex:1;font-size:6px;font-weight:700;text-align:center">Corridor Preview</div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div><div class="sd"></div><div class="sd"></div></div>
+    <div class="ph phmap" style="flex:1;position:relative"><div class="pin" style="top:22%;left:15%"></div><div class="pl" style="top:10%;left:5%">A: Ariana</div><div class="pin" style="top:55%;left:62%"></div><div class="pl" style="top:44%;left:64%">B: Sfax</div><div class="co" style="top:27%;left:22%;width:42%;transform:rotate(22deg)"></div><div class="ml">corridor auto-drawn</div></div>
+    <div class="zr"><div class="zb">A: Ariana</div><div class="za">⟷</div><div class="zb">B: Sfax</div></div>
+    <div class="t tc ti" style="font-size:4.5px">Visible in both zones + corridor</div>
+  </div>
+  <div class="fb"><div id="q302n" class="btn bf">Next: Post Type →</div></div>
+</div></div>
+
+<!-- 303 -->
+<div class="pw"><div class="pn">303</div>
+<div class="phone" id="p303">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q303b" class="bk">←</div><div style="flex:1;font-size:6px;font-weight:700;text-align:center">Step 4 — Type</div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div><div class="sd"></div></div>
+    <div class="dr2"><div class="bdg bdk">DUO</div><div class="t td" style="font-size:5.5px">Ariana ⟷ Sfax</div></div>
+    <div class="g2">
+      <div class="gc gs"><div class="gi"></div><div class="t td" style="font-size:5.5px">Text only</div></div>
+      <div class="gc"><div class="gi"></div><div class="t" style="font-size:5.5px">Text+Photo</div></div>
+      <div class="gc"><div class="gi"></div><div class="t" style="font-size:5.5px">Text+Video</div></div>
+      <div class="gc"><div class="gi" style="background:#ffe0e0"></div><div class="t" style="font-size:5.5px">Live</div></div>
+    </div>
+  </div>
+  <div class="fb"><div id="q303n" class="btn bf">Next: Write Content →</div></div>
+</div></div>
+
+<!-- 304 -->
+<div class="pw"><div class="pn">304</div>
+<div class="phone" id="p304">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q304b" class="bk">←</div><div style="flex:1;font-size:6px;font-weight:700;text-align:center">Step 5 — Content</div></div>
+  <div class="body" style="gap:4px">
+    <div class="stp"><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div><div class="sd so"></div></div>
+    <div class="dr2"><div class="bdg bdk">DUO</div><div class="t td" style="font-size:5.5px">Ariana ⟷ Sfax</div></div>
+    <div class="inp ia">Title *</div>
+    <div style="height:26px;border:1px solid #c8cace;border-radius:4px;padding:3px 6px;font-size:5.5px;color:#ccc">Description...</div>
+    <div class="inp">✓ Contact*</div>
+    <div class="ph phxs" style="border-style:dashed;background:#f9f9f9;color:#ccc">Add media</div>
+  </div>
+  <div class="fb"><div id="q304n" class="btn bf">Preview DUO Ad →</div></div>
+</div></div>
+
+<!-- 305 -->
+<div class="pw"><div class="pn">305</div>
+<div class="phone" id="p305">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q305b" class="bk">←</div><div style="flex:1;font-size:6px;font-weight:700;text-align:center">Preview DUO</div></div>
+  <div class="body" style="gap:4px">
+    <div class="ph phmap" style="height:48px;position:relative"><div class="pin" style="top:22%;left:14%;width:7px;height:7px"></div><div class="pl" style="top:8%;left:3%;font-size:4px">A</div><div class="pin" style="top:52%;left:62%;width:7px;height:7px"></div><div class="pl" style="top:40%;left:65%;font-size:4px">B</div><div class="co" style="top:26%;left:20%;width:44%;transform:rotate(22deg)"></div></div>
+    <div style="border:1px dashed #c8cace;border-radius:3px;padding:3px;font-size:4.5px;color:#555;text-align:center">Visible: <b>Ariana</b>, <b>Sfax</b> + corridor</div>
+    <div class="card ck"><div style="display:flex;gap:3px;align-items:center"><div class="bdg bdk">DUO</div><div class="ln lnd w60" style="flex:1"></div></div><div class="ph phmd"></div><div class="t">Ariana ⟷ Sfax · just now</div></div>
+    <div class="t tc ti" style="font-size:4.5px">⏱ Expires in 24h</div>
+    <div id="q305p" class="btn bf">PUBLISH DUO AD</div>
+  </div>
+</div></div>
+
+<!-- 306 -->
+<div class="pw"><div class="pn">306</div>
+<div class="phone" id="p306">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:7px">
+    <div class="scc">✓</div>
+    <div class="t tb2 tc">DUO Ad is live!</div>
+    <div class="zr"><div class="zb">Ariana</div><div class="za">⟷</div><div class="zb">Sfax</div></div>
+    <div class="t tc ti" style="font-size:4.5px">+ all corridor zones · 24h</div>
+    <div class="card" style="width:100%"><div style="display:flex;gap:3px;align-items:center"><div class="bdg bdk">DUO</div><div class="ln lnd w60" style="flex:1"></div></div><div class="t">Ariana ⟷ Sfax · just now</div></div>
+    <div id="q306v" class="btn bo" style="width:100%">VIEW MY AD</div>
+    <div id="q306a" class="btn bf" style="width:100%">+ CREATE ANOTHER</div>
+  </div>
+</div>
+<div class="xnote">VIEW → Ad Detail (004)</div>
+<div class="xnote" style="margin-top:2px">CREATE ANOTHER → back to 300</div>
+</div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 6 — MY ADS (view · renew · delete)
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 6 — My Ads · View · Renew · Delete &nbsp;·&nbsp; Entry: Menu → My Ads (logged in)</div>
+<div class="row" id="r6">
+<svg class="row-svg" id="s6"></svg>
+
+<!-- 600 PROFILE HOME -->
+<div class="pw"><div class="pn">600</div>
+<div class="phone" id="p600">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">My Profile</div></div>
+  <div class="body" style="gap:4px">
+    <div style="display:flex;align-items:center;gap:7px;padding:2px 0">
+      <div style="width:28px;height:28px;background:#dce8f5;border-radius:50%;border:1px solid #c5d8ee;flex-shrink:0"></div>
+      <div style="display:flex;flex-direction:column;gap:2px;flex:1">
+        <div class="ln lnd w80"></div>
+        <div class="ln w60"></div>
+      </div>
+    </div>
+    <div class="dv"></div>
+    <div class="t td" style="font-size:6px;font-weight:600">My Active Ads</div>
+    <div style="display:flex;gap:4px">
+      <div style="flex:1;border:1px solid #dde0e5;border-radius:4px;padding:4px;text-align:center">
+        <div class="t tb2" style="font-size:11px;color:#1a1a1a">3</div>
+        <div class="t" style="font-size:5px">LOCAL</div>
+      </div>
+      <div style="flex:1;border:1px solid #7aa3cc;border-radius:4px;padding:4px;text-align:center">
+        <div class="t tb2" style="font-size:11px;color:#4a7ab0">1</div>
+        <div class="t" style="font-size:5px">DUO</div>
+      </div>
+    </div>
+  </div>
+  <div class="fb">
+    <div id="q600n" class="btn bf">VIEW MY ADS →</div>
+  </div>
+</div></div>
+
+<!-- 601 ADS LIST -->
+<div class="pw"><div class="pn">601</div>
+<div class="phone" id="p601">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="q601b" class="bk">←</div>
+    <div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">My Ads</div>
+    <div style="font-size:6px;color:#4a7ab0;flex-shrink:0">Filter</div>
+  </div>
+  <div class="body" style="gap:3px;overflow:hidden">
+    <div id="q601c" class="card" style="border-left:3px solid #1a1a1a">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div class="ln lnd w60"></div>
+        <div class="bdg bbl">LOCAL</div>
+      </div>
+      <div class="ln w80"></div>
+      <div style="display:flex;gap:3px;align-items:center">
+        <div class="t ti" style="font-size:5px;color:#e08030">⏱ 8h left</div>
+        <div class="ln w40"></div>
+      </div>
+    </div>
+    <div class="card" style="border-left:3px solid #7aa3cc">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div class="ln lnd w60"></div>
+        <div class="bdg bdk" style="font-size:4.5px">DUO</div>
+      </div>
+      <div class="ln w80"></div>
+      <div style="display:flex;gap:3px;align-items:center">
+        <div class="t ti" style="font-size:5px;color:#e08030">⏱ 3h left</div>
+        <div class="ln w40"></div>
+      </div>
+    </div>
+    <div class="card" style="border-left:3px solid #bbb;opacity:.7">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div class="ln w60"></div>
+        <div class="t" style="font-size:5px;color:#bbb">EXPIRED</div>
+      </div>
+      <div class="ln w50"></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- 602 AD MANAGEMENT -->
+<div class="pw"><div class="pn">602</div>
+<div class="phone" id="p602">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="q602b" class="bk">←</div>
+    <div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Ad Details</div>
+  </div>
+  <div class="body" style="gap:4px">
+    <div class="card ck">
+      <div class="ln lnd w80"></div>
+      <div class="ph phmd"></div>
+      <div style="display:flex;gap:3px"><div class="bdg bbl">Ariana</div><div class="ln w40"></div></div>
+    </div>
+    <div style="display:flex;gap:3px;align-items:center;padding:2px 0">
+      <div class="t ti" style="font-size:5.5px;color:#e08030">⏱ 8h remaining</div>
+    </div>
+    <div class="dv"></div>
+    <div class="t td" style="font-size:6px;font-weight:600">Statistics</div>
+    <div class="r">
+      <div style="border:1px solid #dde0e5;border-radius:4px;padding:4px 3px;text-align:center">
+        <div class="t tb2" style="font-size:10px">142</div>
+        <div class="t" style="font-size:5px">Views</div>
+      </div>
+      <div style="border:1px solid #dde0e5;border-radius:4px;padding:4px 3px;text-align:center">
+        <div class="t tb2" style="font-size:10px">8</div>
+        <div class="t" style="font-size:5px">Contacts</div>
+      </div>
+    </div>
+  </div>
+  <div class="fb" style="gap:3px">
+    <div id="q602r" class="btn bf">RENEW (+24h)</div>
+    <div id="q602d" class="btn bo" style="border-color:#cc3333;color:#cc3333">DELETE AD</div>
+  </div>
+</div></div>
+
+<!-- 603 RENEW SUCCESS -->
+<div class="pw"><div class="pn">603</div>
+<div class="phone" id="p603">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q603b" class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Renewed!</div></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:8px">
+    <div class="scc" style="border-color:#1a1a1a">✓</div>
+    <div class="t tb2 tc">Ad renewed!</div>
+    <div class="t tc">Active for another 24h</div>
+    <div class="card" style="width:100%">
+      <div class="ln lnd w80"></div>
+      <div style="display:flex;gap:3px"><div class="bdg bbl">Ariana</div><div class="t ti" style="font-size:5px;color:#4a9a4a">24h from now</div></div>
+    </div>
+    <div class="btn bf" style="width:100%">BACK TO MY ADS</div>
+  </div>
+</div></div>
+
+<!-- 604 DELETE CONFIRM -->
+<div class="pw"><div class="pn">604</div>
+<div class="phone" id="p604">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q604b" class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Delete Ad</div></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:10px">
+    <div style="width:32px;height:32px;border-radius:50%;border:2px solid #cc3333;display:flex;align-items:center;justify-content:center;font-size:14px;color:#cc3333;align-self:center">!</div>
+    <div class="t tb2 tc">Delete this ad?</div>
+    <div class="t tc" style="color:#888">This action cannot be undone. The ad will be permanently removed.</div>
+    <div class="r" style="width:100%">
+      <div class="btn bl">CANCEL</div>
+      <div class="btn bf" style="background:#cc3333">DELETE</div>
+    </div>
+  </div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 7 — PAYMENT (boost · plan · checkout)
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 7 — Payment · Boost Ad · Choose Plan · Checkout</div>
+<div class="row" id="r7">
+<svg class="row-svg" id="s7"></svg>
+
+<!-- 700 BOOST ENTRY -->
+<div class="pw"><div class="pn">700</div>
+<div class="phone" id="p700">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Ad Details</div></div>
+  <div class="body" style="gap:4px">
+    <div class="card ck"><div class="ln lnd w80"></div><div class="ph phmd"></div><div style="display:flex;gap:3px"><div class="bdg bbl">Ariana</div><div class="ln w40"></div></div></div>
+    <div class="dv"></div>
+    <div style="border:1px solid #f0c060;border-radius:5px;padding:5px 6px;background:#fffbf0">
+      <div class="t td" style="font-size:6px;font-weight:700">⭐ Boost this ad</div>
+      <div class="t" style="font-size:5px;margin-top:2px">Get 5× more visibility. Choose a plan to promote.</div>
+    </div>
+  </div>
+  <div class="fb">
+    <div id="q700n" class="btn bf">BOOST THIS AD →</div>
+  </div>
+</div></div>
+
+<!-- 701 PLAN SELECTION -->
+<div class="pw"><div class="pn">701</div>
+<div class="phone" id="p701">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q701b" class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Choose Plan</div></div>
+  <div class="body" style="gap:4px">
+    <div style="border:1.5px solid #1a1a1a;border-radius:5px;padding:6px;display:flex;flex-direction:column;gap:3px;background:#f8f8f8">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="t td" style="font-size:6.5px;font-weight:700">Basic</div>
+        <div class="t tb2" style="font-size:7px">2 TND</div>
+      </div>
+      <div class="t" style="font-size:5px">24h boost · 2× visibility</div>
+      <div class="bdg bdk" style="align-self:flex-start;font-size:5px">SELECTED</div>
+    </div>
+    <div style="border:1px solid #dde0e5;border-radius:5px;padding:6px;display:flex;flex-direction:column;gap:3px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="t td" style="font-size:6.5px;font-weight:700">Pro</div>
+        <div class="t tb2" style="font-size:7px">5 TND</div>
+      </div>
+      <div class="t" style="font-size:5px">72h boost · 5× visibility · top of feed</div>
+    </div>
+    <div style="border:1px solid #dde0e5;border-radius:5px;padding:6px;display:flex;flex-direction:column;gap:3px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="t td" style="font-size:6.5px;font-weight:700">Premium</div>
+        <div class="t tb2" style="font-size:7px">10 TND</div>
+      </div>
+      <div class="t" style="font-size:5px">7-day boost · featured badge · homepage</div>
+    </div>
+  </div>
+  <div class="fb"><div id="q701n" class="btn bf">CONTINUE →</div></div>
+</div></div>
+
+<!-- 702 PAYMENT METHOD -->
+<div class="pw"><div class="pn">702</div>
+<div class="phone" id="p702">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q702b" class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Payment</div></div>
+  <div class="body" style="gap:4px">
+    <div style="border:1px solid #dde0e5;border-radius:4px;padding:4px 6px;display:flex;justify-content:space-between">
+      <div class="t td" style="font-size:5.5px">Plan</div>
+      <div class="t tb2" style="font-size:6px">Basic · 24h</div>
+    </div>
+    <div style="border:1px solid #dde0e5;border-radius:4px;padding:4px 6px;display:flex;justify-content:space-between">
+      <div class="t td" style="font-size:5.5px">Total</div>
+      <div class="t tb2" style="font-size:6px">2.00 TND</div>
+    </div>
+    <div class="dv"></div>
+    <div class="t td" style="font-size:5.5px;font-weight:600">Payment method</div>
+    <div style="border:1.5px solid #1a1a1a;border-radius:5px;padding:5px 6px;display:flex;align-items:center;gap:5px;background:#f8f8f8">
+      <div style="width:18px;height:12px;background:#dce8f5;border-radius:2px;border:1px solid #b0ccec;flex-shrink:0"></div>
+      <div class="t td" style="font-size:6px">Credit / Debit Card</div>
+      <div class="bdg bdk" style="margin-left:auto;font-size:4.5px">✓</div>
+    </div>
+    <div style="border:1px solid #dde0e5;border-radius:5px;padding:5px 6px;display:flex;align-items:center;gap:5px">
+      <div style="width:18px;height:12px;background:#f5f5f5;border-radius:2px;border:1px solid #dde0e5;flex-shrink:0"></div>
+      <div class="t" style="font-size:6px">Mobile Payment (D17)</div>
+    </div>
+    <div class="inp ia" style="font-size:5.5px;color:#bbb">Card number  •••• •••• •••• ____</div>
+  </div>
+  <div class="fb"><div id="q702n" class="btn bf">PAY 2.00 TND</div></div>
+</div></div>
+
+<!-- 703 PROCESSING -->
+<div class="pw"><div class="pn">703</div>
+<div class="phone" id="p703">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div id="q703b" class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Processing...</div></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:10px">
+    <div style="width:36px;height:36px;border-radius:50%;border:3px solid #e8eaed;border-top-color:#1a1a1a;align-self:center"></div>
+    <div class="t tb2 tc">Confirming payment</div>
+    <div class="t tc">Please wait...</div>
+    <div class="btn bd" style="width:80%">Processing…</div>
+  </div>
+</div></div>
+
+<!-- 704 PAYMENT SUCCESS -->
+<div class="pw"><div class="pn">704</div>
+<div class="phone" id="p704">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:8px">
+    <div class="scc" style="border-color:#2a9a2a;color:#2a9a2a">✓</div>
+    <div class="t tb2 tc">Payment successful!</div>
+    <div class="t tc">Your ad is now boosted</div>
+    <div style="border:1px solid #c8e8c8;border-radius:5px;padding:5px 7px;width:100%;background:#f0fff0">
+      <div class="t td" style="font-size:5.5px;font-weight:600">Basic Boost · 24h</div>
+      <div class="t" style="font-size:5px;margin-top:2px">2× visibility activated</div>
+    </div>
+    <div class="btn bf" style="width:100%">VIEW BOOSTED AD →</div>
+  </div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 8 — NOTIFICATIONS
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 8 — Notifications &nbsp;·&nbsp; Entry: Menu → Notifications · bell icon</div>
+<div class="row" id="r8">
+<svg class="row-svg" id="s8"></svg>
+
+<!-- 800 NOTIF LIST -->
+<div class="pw"><div class="pn">800</div>
+<div class="phone" id="p800">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div class="bk">←</div>
+    <div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Notifications</div>
+    <div class="t" style="font-size:5.5px;color:#4a7ab0;flex-shrink:0">Mark all read</div>
+  </div>
+  <div class="body" style="gap:3px;overflow:hidden">
+    <div id="q800n" class="card" style="border-left:3px solid #1a1a1a">
+      <div style="display:flex;gap:3px;align-items:flex-start">
+        <div style="width:8px;height:8px;background:#1a1a1a;border-radius:50%;flex-shrink:0;margin-top:1px"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+          <div class="ln lnd w80"></div>
+          <div class="ln w60"></div>
+          <div class="t ti" style="font-size:4.5px">2 min ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="border-left:3px solid #1a1a1a">
+      <div style="display:flex;gap:3px;align-items:flex-start">
+        <div style="width:8px;height:8px;background:#1a1a1a;border-radius:50%;flex-shrink:0;margin-top:1px"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+          <div class="ln lnd w80"></div>
+          <div class="ln w60"></div>
+          <div class="t ti" style="font-size:4.5px">1h ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="opacity:.6">
+      <div style="display:flex;gap:3px;align-items:flex-start">
+        <div style="width:8px;height:8px;background:#dde0e5;border-radius:50%;flex-shrink:0;margin-top:1px"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+          <div class="ln w80"></div>
+          <div class="ln w60"></div>
+          <div class="t ti" style="font-size:4.5px">Yesterday</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="opacity:.5">
+      <div style="display:flex;gap:3px;align-items:flex-start">
+        <div style="width:8px;height:8px;background:#dde0e5;border-radius:50%;flex-shrink:0;margin-top:1px"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+          <div class="ln w80"></div>
+          <div class="ln w50"></div>
+          <div class="t ti" style="font-size:4.5px">2 days ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- 801 NOTIF DETAIL -->
+<div class="pw"><div class="pn">801</div>
+<div class="phone" id="p801">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="q801b" class="bk">←</div>
+    <div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Notification</div>
+  </div>
+  <div class="body" style="gap:5px">
+    <div style="padding:4px 0;border-bottom:1px solid #eaebee">
+      <div class="ln lnd w80" style="margin-bottom:3px"></div>
+      <div class="ln w60"></div>
+    </div>
+    <div class="t ti" style="font-size:5px">2 min ago</div>
+    <div style="height:40px;border:1px solid #eaebee;border-radius:4px;padding:4px 6px;font-size:5.5px;color:#bbb">Message preview...</div>
+    <div class="dv"></div>
+    <div class="btn bf" style="width:100%">VIEW RELATED AD →</div>
+    <div class="btn bl" style="width:100%">DISMISS</div>
+  </div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 9 — PROFILE & SETTINGS
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 9 — Profile &amp; Settings &nbsp;·&nbsp; Entry: Profile tab in bottom nav</div>
+<div class="row" id="r9">
+<svg class="row-svg" id="s9"></svg>
+
+<!-- 900 PROFILE -->
+<div class="pw"><div class="pn">900</div>
+<div class="phone" id="p900">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div class="bk">←</div>
+    <div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Profile</div>
+  </div>
+  <div class="body" style="gap:4px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0">
+      <div style="width:36px;height:36px;background:#dce8f5;border-radius:50%;border:1.5px solid #b0ccec"></div>
+      <div class="ln lnd w60" style="align-self:stretch"></div>
+      <div class="ln w40" style="align-self:stretch"></div>
+    </div>
+    <div class="dv"></div>
+    <div id="q900n" class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Edit Profile</div>
+      <div class="t">›</div>
+    </div>
+    <div id="q900s" class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Settings</div>
+      <div class="t">›</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">My Ads</div>
+      <div class="t">›</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Help &amp; Support</div>
+      <div class="t">›</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t" style="font-size:6px;color:#cc3333">Log Out</div>
+      <div class="t" style="color:#cc3333">›</div>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni"><div class="nic nr"></div><div class="nil">Globe</div></div>
+    <div class="ni"><div class="nic"></div><div class="nil">Search</div></div>
+    <div class="ni"><div class="nic nr non"></div><div class="nil">Profile</div></div>
+  </div>
+</div></div>
+
+<!-- 901 EDIT PROFILE -->
+<div class="pw"><div class="pn">901</div>
+<div class="phone" id="p901">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="q901b" class="bk">←</div>
+    <div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Edit Profile</div>
+  </div>
+  <div class="body" style="gap:4px">
+    <div style="display:flex;align-items:center;gap:6px;padding:2px 0">
+      <div style="width:28px;height:28px;background:#dce8f5;border-radius:50%;border:1.5px solid #b0ccec;flex-shrink:0"></div>
+      <div class="btn bl" style="font-size:5.5px;flex:1">Change photo</div>
+    </div>
+    <div class="inp ia">Full name</div>
+    <div class="inp">Phone number</div>
+    <div class="inp">Email address</div>
+    <div class="t td" style="font-size:5.5px;font-weight:600">Preferred Zone</div>
+    <div class="inp">e.g. Ariana, Tunis...</div>
+  </div>
+  <div class="fb"><div id="q901n" class="btn bf">SAVE CHANGES</div></div>
+</div></div>
+
+<!-- 902 SETTINGS -->
+<div class="pw"><div class="pn">902</div>
+<div class="phone" id="p902">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="q902b" class="bk">←</div>
+    <div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Settings</div>
+  </div>
+  <div class="body" style="gap:3px">
+    <div class="t td" style="font-size:5.5px;font-weight:600;padding:2px 0">Preferences</div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Language</div>
+      <div class="t" style="font-size:5.5px">العربية ›</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Notifications</div>
+      <div class="tgl"><div class="tgd" style="margin-left:auto;border-color:#ccc;background:#fff"></div></div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Location access</div>
+      <div class="tgl" style="background:#1a1a1a;border-color:#1a1a1a"><div class="tgd" style="margin-left:auto;border-color:#fff"></div></div>
+    </div>
+    <div class="dv"></div>
+    <div class="t td" style="font-size:5.5px;font-weight:600;padding:2px 0">Account</div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Change password</div>
+      <div class="t">›</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Privacy policy</div>
+      <div class="t">›</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t" style="font-size:6px;color:#cc3333">Delete account</div>
+      <div class="t" style="color:#cc3333">›</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- 903 SAVE SUCCESS -->
+<div class="pw"><div class="pn">903</div>
+<div class="phone" id="p903">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div class="bk">←</div><div style="flex:1;font-size:6.5px;font-weight:700;text-align:center">Profile</div></div>
+  <div class="body" style="align-items:center;justify-content:center;gap:8px">
+    <div class="scc">✓</div>
+    <div class="t tb2 tc">Profile updated!</div>
+    <div style="width:36px;height:36px;background:#dce8f5;border-radius:50%;border:1.5px solid #b0ccec;align-self:center"></div>
+    <div class="ln lnd w60" style="align-self:stretch"></div>
+    <div class="ln w40" style="align-self:stretch"></div>
+    <div class="btn bf" style="width:100%;margin-top:4px">BACK TO PROFILE</div>
+  </div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FLOW 10 — ADMIN BACKOFFICE
+══════════════════════════════════════ -->
+<div class="section">
+<div class="slbl">Flow 10 — Admin Backoffice &nbsp;·&nbsp; Web dashboard (accessible via admin.bymap.tn)</div>
+<div class="row" id="r10">
+<svg class="row-svg" id="s10"></svg>
+
+<!-- A00 DASHBOARD -->
+<div class="pw"><div class="pn">A00</div>
+<div class="phone" id="pa00">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb"><div style="flex:1;font-size:6px;font-weight:700">Admin · ByMap</div><div class="t ti" style="font-size:5px;color:#cc3333">Admin</div></div>
+  <div class="body" style="gap:4px">
+    <div class="t td" style="font-size:5.5px;font-weight:700;padding:2px 0">Dashboard</div>
+    <div class="r">
+      <div style="border:1px solid #dde0e5;border-radius:4px;padding:4px 3px;text-align:center">
+        <div class="t tb2" style="font-size:10px">1.2k</div>
+        <div class="t" style="font-size:4.5px">Active Ads</div>
+      </div>
+      <div style="border:1px solid #7aa3cc;border-radius:4px;padding:4px 3px;text-align:center">
+        <div class="t tb2" style="font-size:10px;color:#4a7ab0">342</div>
+        <div class="t" style="font-size:4.5px">Users</div>
+      </div>
+    </div>
+    <div style="height:38px;background:repeating-linear-gradient(90deg,#f0f2f5 0,#f0f2f5 8px,#e8eaed 8px,#e8eaed 10px);border-radius:4px;border:1px solid #dde0e5"></div>
+    <div class="t" style="font-size:4.5px;text-align:center">Activity chart — last 7 days</div>
+    <div class="dv"></div>
+    <div id="qa00n" class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">All Ads</div>
+      <div class="t">›</div>
+    </div>
+    <div id="qa00u" class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Users</div>
+      <div class="t">›</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;justify-content:space-between">
+      <div class="t td" style="font-size:6px">Reports &amp; Flags</div>
+      <div style="background:#cc3333;color:#fff;font-size:5px;font-weight:700;padding:1px 4px;border-radius:3px">3</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- A01 ADS LIST -->
+<div class="pw"><div class="pn">A01</div>
+<div class="phone" id="pa01">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="qa01b" class="bk">←</div>
+    <div style="flex:1;font-size:6px;font-weight:700;text-align:center">All Ads</div>
+    <div style="font-size:5.5px;color:#4a7ab0;flex-shrink:0">Filter</div>
+  </div>
+  <div class="body" style="gap:3px;overflow:hidden">
+    <div style="display:flex;gap:3px;flex-wrap:wrap">
+      <div class="btn bf" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">All</div>
+      <div class="btn bl" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">Active</div>
+      <div class="btn bl" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">Expired</div>
+      <div class="btn bl" style="height:13px;font-size:5px;padding:0 4px;border-radius:7px;flex:none">Flagged</div>
+    </div>
+    <div id="qa01n" class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div class="ln lnd w60"></div><div class="bdg bbl" style="font-size:4.5px">LOCAL</div></div><div class="ln w80"></div><div class="t ti" style="font-size:4.5px">Ariana · 8h left</div></div>
+    <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div class="ln lnd w60"></div><div class="bdg bdk" style="font-size:4.5px">DUO</div></div><div class="ln w80"></div><div class="t ti" style="font-size:4.5px">Tunis⟷Sfax · 3h left</div></div>
+    <div class="card" style="border-color:#cc3333"><div style="display:flex;justify-content:space-between;align-items:center"><div class="ln lnd w60"></div><div style="background:#fff0f0;color:#cc3333;font-size:4.5px;font-weight:700;padding:1px 3px;border-radius:2px;border:1px solid #cc3333">FLAGGED</div></div><div class="ln w80"></div></div>
+  </div>
+</div></div>
+
+<!-- A02 USERS LIST -->
+<div class="pw"><div class="pn">A02</div>
+<div class="phone" id="pa02">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="qa02b" class="bk">←</div>
+    <div style="flex:1;font-size:6px;font-weight:700;text-align:center">Users</div>
+    <div style="font-size:5.5px;color:#4a7ab0;flex-shrink:0">Search</div>
+  </div>
+  <div class="body" style="gap:3px;overflow:hidden">
+    <div class="card" style="flex-direction:row;align-items:center;gap:4px">
+      <div style="width:16px;height:16px;background:#dce8f5;border-radius:50%;flex-shrink:0"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="ln lnd w80"></div><div class="ln w60"></div></div>
+      <div class="t" style="font-size:4.5px;color:#4a9a4a">Active</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;gap:4px">
+      <div style="width:16px;height:16px;background:#dce8f5;border-radius:50%;flex-shrink:0"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="ln lnd w80"></div><div class="ln w60"></div></div>
+      <div class="t" style="font-size:4.5px;color:#4a9a4a">Active</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;gap:4px">
+      <div style="width:16px;height:16px;background:#f5d5d5;border-radius:50%;flex-shrink:0"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="ln lnd w80"></div><div class="ln w60"></div></div>
+      <div class="t" style="font-size:4.5px;color:#cc3333">Banned</div>
+    </div>
+    <div class="card" style="flex-direction:row;align-items:center;gap:4px">
+      <div style="width:16px;height:16px;background:#dce8f5;border-radius:50%;flex-shrink:0"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div class="ln lnd w80"></div><div class="ln w60"></div></div>
+      <div class="t" style="font-size:4.5px;color:#4a9a4a">Active</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- A03 AD MODERATION -->
+<div class="pw"><div class="pn">A03</div>
+<div class="phone" id="pa03">
+  <div class="sb"><span>9:41</span><span>●●●</span></div>
+  <div class="tb">
+    <div id="qa03b" class="bk">←</div>
+    <div style="flex:1;font-size:6px;font-weight:700;text-align:center">Moderate Ad</div>
+  </div>
+  <div class="body" style="gap:4px">
+    <div class="card ck"><div class="ln lnd w80"></div><div class="ph phmd"></div><div style="display:flex;gap:3px"><div class="bdg bbl">Ariana</div><div class="ln w40"></div></div></div>
+    <div style="border:1px solid #f8c8c8;border-radius:4px;padding:4px 6px;background:#fff8f8">
+      <div class="t" style="font-size:5.5px;color:#cc3333;font-weight:600">⚠ Flagged by 2 users</div>
+      <div class="ln w80" style="margin-top:2px"></div>
+    </div>
+    <div class="dv"></div>
+    <div class="t td" style="font-size:5.5px;font-weight:600">Admin action</div>
+    <div class="r">
+      <div class="btn bl" style="font-size:5.5px">IGNORE</div>
+      <div class="btn bf" style="font-size:5.5px;background:#cc3333">REMOVE AD</div>
+    </div>
+    <div class="btn bl" style="font-size:5.5px">BAN USER</div>
+  </div>
+</div></div>
+
+</div>
+</div>
+
+<script>
+// ─────────────────────────────────────────
+// ARROWS: only same-row, straight connectors
+// style: thin gray lines, right-angle bends,
+// small filled arrowhead — like the reference
+// ─────────────────────────────────────────
+
+// Each arrow:
+// from / to  = element IDs
+// type = 'fwd'  → right side of FROM to left side of TO  (straight horizontal or one bend)
+//        'back' → curved below the phones (dashed)
+// label = string shown near FROM element
+
+const FLOWS = [
+  // ── Flow 1 ──
+  { row:'r1', svg:'s1', arrows:[
+    { from:'p000', to:'p001', type:'fwd',  lb:'auto 2s',   anchor:'mid' },
+    { from:'q001h',to:'p002', type:'fwd',  lb:'hamburger', anchor:'mid' },
+    { from:'q001l',to:'p003', type:'fwd',  lb:'LOCAL',     anchor:'mid' },
+    { from:'q003c',to:'p004', type:'fwd',  lb:'tap post',  anchor:'mid' },
+    { from:'q003b',to:'p001', type:'back', lb:'back' },
+    { from:'q001s',to:'p006', type:'fwd',  lb:'search',    anchor:'mid' }, // skip — cross-row note only
+  ]},
+  // ── Flow 2 ──
+  { row:'r2', svg:'s2', arrows:[
+    { from:'q005s',to:'p006', type:'fwd', lb:'search',     anchor:'mid' },
+    { from:'q005c',to:'p004', type:'fwd', lb:'tap post',   anchor:'mid' }, // cross — skip
+    { from:'q006r',to:'p004', type:'fwd', lb:'tap result', anchor:'mid' }, // cross — skip
+    { from:'q007b',to:'p005', type:'back',lb:'back' },
+    { from:'q007l',to:'p003', type:'fwd', lb:'LOCAL',      anchor:'mid' }, // cross — skip
+    { from:'q008b',to:'p007', type:'back',lb:'back' },
+    { from:'q008l',to:'p003', type:'fwd', lb:'LOCAL',      anchor:'mid' }, // cross — skip
+    { from:'p005', to:'p006', type:'fwd', lb:'',           anchor:'mid' },
+    { from:'p006', to:'p007', type:'fwd', lb:'zone tap',   anchor:'mid' },
+    { from:'p007', to:'p008', type:'fwd', lb:'delegation', anchor:'mid' },
+  ]},
+  // ── Flow 3 ──
+  { row:'r3', svg:'s3', arrows:[
+    { from:'q100t',to:'p101', type:'fwd', lb:'Sign Up tab', anchor:'mid' },
+    { from:'q101c',to:'p102', type:'fwd', lb:'submit',      anchor:'mid' },
+    { from:'q100l',to:'p102', type:'fwd', lb:'→ OTP',       anchor:'mid' }, // login also goes thru OTP
+  ]},
+  // ── Flow 4 ──
+  { row:'r4', svg:'s4', arrows:[
+    { from:'p200', to:'p201', type:'fwd', lb:'',           anchor:'mid' },
+    { from:'p201', to:'p202', type:'fwd', lb:'',           anchor:'mid' },
+    { from:'p202', to:'p203', type:'fwd', lb:'',           anchor:'mid' },
+    { from:'p203', to:'p204', type:'fwd', lb:'publish',    anchor:'mid' },
+    { from:'q201b',to:'p200', type:'back',lb:'back' },
+    { from:'q202b',to:'p201', type:'back',lb:'back' },
+    { from:'q203b',to:'p202', type:'back',lb:'back' },
+    { from:'q200n',to:'p201', type:'btn-fwd', lb:'Next →' },
+    { from:'q201n',to:'p202', type:'btn-fwd', lb:'Next →' },
+    { from:'q202n',to:'p203', type:'btn-fwd', lb:'Next →' },
+    { from:'q203p',to:'p204', type:'btn-fwd', lb:'Publish' },
+  ]},
+  // ── Flow 5 ──
+  { row:'r5', svg:'s5', arrows:[
+    { from:'q300n',to:'p301', type:'btn-fwd', lb:'Zone A set' },
+    { from:'q301n',to:'p302', type:'btn-fwd', lb:'Zone B set' },
+    { from:'q302n',to:'p303', type:'btn-fwd', lb:'confirmed' },
+    { from:'q303n',to:'p304', type:'btn-fwd', lb:'type' },
+    { from:'q304n',to:'p305', type:'btn-fwd', lb:'filled' },
+    { from:'q305p',to:'p306', type:'btn-fwd', lb:'publish' },
+    { from:'q301b',to:'p300', type:'back', lb:'back' },
+    { from:'q302b',to:'p301', type:'back', lb:'back' },
+    { from:'q303b',to:'p302', type:'back', lb:'back' },
+    { from:'q304b',to:'p303', type:'back', lb:'back' },
+    { from:'q305b',to:'p304', type:'back', lb:'back' },
+  ]},
+
+  // ── Flow 6 ──
+  { row:'r6', svg:'s6', arrows:[
+    { from:'q600n', to:'p601', type:'btn-fwd', lb:'my ads' },
+    { from:'q601c', to:'p602', type:'btn-fwd', lb:'tap ad' },
+    { from:'q602r', to:'p603', type:'btn-fwd', lb:'renew' },
+    { from:'q602d', to:'p604', type:'btn-fwd', lb:'delete' },
+    { from:'q601b', to:'p600', type:'back', lb:'back' },
+    { from:'q602b', to:'p601', type:'back', lb:'back' },
+    { from:'q603b', to:'p602', type:'back', lb:'back' },
+    { from:'q604b', to:'p602', type:'back', lb:'cancel' },
+  ]},
+
+  // ── Flow 7 ──
+  { row:'r7', svg:'s7', arrows:[
+    { from:'q700n', to:'p701', type:'btn-fwd', lb:'boost' },
+    { from:'q701n', to:'p702', type:'btn-fwd', lb:'plan chosen' },
+    { from:'q702n', to:'p703', type:'btn-fwd', lb:'pay' },
+    { from:'q703n', to:'p704', type:'btn-fwd', lb:'confirmed' },
+    { from:'q701b', to:'p700', type:'back', lb:'back' },
+    { from:'q702b', to:'p701', type:'back', lb:'back' },
+    { from:'q703b', to:'p702', type:'back', lb:'back' },
+  ]},
+
+  // ── Flow 8 ──
+  { row:'r8', svg:'s8', arrows:[
+    { from:'q800n', to:'p801', type:'btn-fwd', lb:'tap notif' },
+    { from:'q801b', to:'p800', type:'back', lb:'back' },
+  ]},
+
+  // ── Flow 9 ──
+  { row:'r9', svg:'s9', arrows:[
+    { from:'q900n', to:'p901', type:'btn-fwd', lb:'edit profile' },
+    { from:'q900s', to:'p902', type:'btn-fwd', lb:'settings' },
+    { from:'q901n', to:'p903', type:'btn-fwd', lb:'save' },
+    { from:'q901b', to:'p900', type:'back', lb:'back' },
+    { from:'q902b', to:'p900', type:'back', lb:'back' },
+  ]},
+
+  // ── Flow 10 ──
+  { row:'r10', svg:'s10', arrows:[
+    { from:'qa00n', to:'pa01', type:'btn-fwd', lb:'ads' },
+    { from:'qa00u', to:'pa02', type:'btn-fwd', lb:'users' },
+    { from:'qa01n', to:'pa03', type:'btn-fwd', lb:'tap ad' },
+    { from:'qa03b', to:'pa01', type:'back', lb:'back' },
+    { from:'qa01b', to:'pa00', type:'back', lb:'back' },
+    { from:'qa02b', to:'pa00', type:'back', lb:'back' },
+  ]},
+];
+
+function bb(id, rowEl) {
+  const el = document.getElementById(id);
+  if (!el) return null;
+  if (!rowEl.contains(el)) return null;
+  const er = el.getBoundingClientRect();
+  const rr = rowEl.getBoundingClientRect();
+  return {
+    x1: er.left - rr.left, y1: er.top - rr.top,
+    x2: er.right - rr.left, y2: er.bottom - rr.top,
+    mx: (er.left + er.right)/2 - rr.left,
+    my: (er.top + er.bottom)/2 - rr.top,
+    w: er.width, h: er.height
+  };
+}
+
+function makePath(d, stroke, sw, dash, marker) {
+  const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+  p.setAttribute('d', d);
+  p.setAttribute('fill','none');
+  p.setAttribute('stroke', stroke);
+  p.setAttribute('stroke-width', sw);
+  if (dash) p.setAttribute('stroke-dasharray', dash);
+  if (marker) p.setAttribute('marker-end', marker);
+  return p;
+}
+
+function makeLabel(svg, x, y, text, color) {
+  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+  const tw = text.length * 3.8 + 6;
+  const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  bg.setAttribute('x', x-1); bg.setAttribute('y', y-7);
+  bg.setAttribute('width', tw); bg.setAttribute('height', 9);
+  bg.setAttribute('rx','2'); bg.setAttribute('fill','#e9ebee');
+  bg.setAttribute('opacity','0.95');
+  const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t.setAttribute('x', x); t.setAttribute('y', y);
+  t.setAttribute('font-size','6');
+  t.setAttribute('font-family','-apple-system,sans-serif');
+  t.setAttribute('fill', color || '#888');
+  t.textContent = text;
+  g.appendChild(bg); g.appendChild(t);
+  svg.appendChild(g);
+}
+
+function drawAll() {
+  FLOWS.forEach(flow => {
+    const rowEl = document.getElementById(flow.row);
+    const svg   = document.getElementById(flow.svg);
+    if (!rowEl || !svg) return;
+
+    const rr = rowEl.getBoundingClientRect();
+    const W = rr.width + 20;
+    const H = rr.height + 70; // extra space for under-phone back arrows
+    svg.style.width  = W + 'px';
+    svg.style.height = H + 'px';
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.innerHTML = `<defs>
+      <marker id="ah-${flow.row}" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto">
+        <polygon points="0 0,5 2.5,0 5" fill="#888"/>
+      </marker>
+      <marker id="ahd-${flow.row}" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto">
+        <polygon points="0 0,5 2.5,0 5" fill="#bbb"/>
+      </marker>
+    </defs>`;
+
+    flow.arrows.forEach(a => {
+      const fe = bb(a.from, rowEl);
+      const te = bb(a.to,   rowEl);
+      if (!fe || !te) return; // skip cross-row
+
+      if (a.type === 'fwd') {
+        // Phone-to-phone: right edge of FROM to left edge of TO
+        // If roughly same vertical level → straight line
+        // Otherwise → L-shape
+        const fx = fe.x2, fy = fe.my;
+        const tx = te.x1, ty = te.my;
+        const mid = (fx + tx) / 2;
+        let d;
+        if (Math.abs(fy - ty) < 6) {
+          d = `M${fx},${fy} L${tx},${ty}`;
+        } else {
+          d = `M${fx},${fy} L${mid},${fy} L${mid},${ty} L${tx},${ty}`;
+        }
+        svg.appendChild(makePath(d,'#999','1.1',null,`url(#ah-${flow.row})`));
+        if (a.lb) makeLabel(svg, mid+3, Math.min(fy,ty)-3, a.lb, '#888');
+
+      } else if (a.type === 'btn-fwd') {
+        // Button to next phone: right edge of button → left edge of phone
+        const fx = fe.x2, fy = fe.my;
+        const tx = te.x1, ty = te.my;
+        const mid = (fx + tx) / 2;
+        let d;
+        if (Math.abs(fy - ty) < 6) {
+          d = `M${fx},${fy} L${tx},${ty}`;
+        } else {
+          d = `M${fx},${fy} L${mid},${fy} L${mid},${ty} L${tx},${ty}`;
+        }
+        svg.appendChild(makePath(d,'#555','1.2',null,`url(#ah-${flow.row})`));
+        if (a.lb) makeLabel(svg, mid+3, Math.min(fy,ty)-3, a.lb, '#555');
+
+      } else if (a.type === 'back') {
+        // Back arrow: goes below the phones, dashed
+        const fx = fe.x1, fy = fe.my;   // left of back button
+        const tx = te.x2, ty = te.my;   // right of target phone
+        const underY = rr.height + 22;  // below all phones
+        // go left from back button, drop down, go right under phones, come back up to right side of target
+        const d = `M${fx},${fy} L${fx-8},${fy} L${fx-8},${underY} L${tx+8},${underY} L${tx+8},${ty} L${tx},${ty}`;
+        svg.appendChild(makePath(d,'#bbb','1',`3 3`,`url(#ahd-${flow.row})`));
+        if (a.lb) makeLabel(svg, (fx+tx)/2, underY+10, a.lb, '#bbb');
+      }
+    });
+  });
+}
+
+window.addEventListener('load', () => setTimeout(drawAll, 200));
+window.addEventListener('resize', () => setTimeout(drawAll, 100));
+</script>
+</body>
+</html>
