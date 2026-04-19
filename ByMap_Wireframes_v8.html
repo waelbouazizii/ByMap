@@ -168,20 +168,72 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
 <div class="pw"><div class="pn">001</div>
 <div class="phone" id="p001">
   <div class="sb"><span>9:41</span><span>●●●</span></div>
+
+  <!-- topbar: search + hamburger -->
   <div class="tb">
     <div id="q001s" class="sp"><div class="si"></div><span>Search zone, city or ad...</span></div>
     <div id="q001h" class="hbg"><span></span><span></span><span></span></div>
   </div>
+
+  <!-- breadcrumb row — always visible, updates live with map -->
+  <div style="padding:3px 10px;border-bottom:1px solid #eaebee;display:flex;align-items:center;gap:3px;background:#fafafa;flex-shrink:0">
+    <span style="font-size:6.5px;font-weight:700;color:#1a1a1a">Ariana</span>
+    <span style="font-size:5.5px;color:#ccc">›</span>
+    <span style="font-size:5.5px;color:#666">Tunis Gov.</span>
+    <span style="font-size:5.5px;color:#ccc">›</span>
+    <span style="font-size:5px;color:#bbb">Tunisia</span>
+    <!-- heart icon — right-aligned -->
+    <div id="q001heart" style="margin-left:auto;width:14px;height:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 10C6 10 1 6.5 1 3.5C1 2 2.5 1 4 1.5C5 2 6 3 6 3C6 3 7 2 8 1.5C9.5 1 11 2 11 3.5C11 6.5 6 10 6 10Z" stroke="#bbb" stroke-width="1.2" fill="none"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- map fills remaining space -->
   <div class="body">
     <div class="ph phmap" style="flex:1">
       <div class="pin" style="top:42%;left:44%"></div>
       <div class="pl" style="top:22%;left:35%">Tunis</div>
-      <div class="ml">3D Globe · drag</div>
+      <div class="ml">updates live as map moves</div>
     </div>
   </div>
-  <div class="fb">
-    <div class="fbt">Tunis — Ariana</div>
-    <div id="q001f" class="btn bf">VIEW FEED →</div>
+
+  <!-- counter strip — above navbar, always visible -->
+  <div style="background:#fff;border-top:1px solid #eaebee;flex-shrink:0;position:relative">
+
+    <!-- swipe-up arrows floating above the strip top edge -->
+    <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0;pointer-events:none">
+      <div style="display:flex;gap:3px;align-items:flex-end">
+        <span style="font-size:4px;color:rgba(180,180,180,0.7);line-height:1">▲</span>
+        <span style="font-size:7px;color:rgba(140,140,140,0.85);line-height:1">▲</span>
+        <span style="font-size:4px;color:rgba(180,180,180,0.7);line-height:1">▲</span>
+      </div>
+    </div>
+
+    <div id="q001f" style="padding:5px 10px 5px;display:flex;align-items:center;justify-content:space-between">
+      <!-- LOCAL counter — tap → LOCAL feed -->
+      <div style="display:flex;align-items:center;gap:3px">
+        <div style="width:7px;height:7px;border-radius:2px;background:#22c55e;flex-shrink:0"></div>
+        <span style="font-size:8.5px;font-weight:700;color:#1a1a1a">124</span>
+        <span style="font-size:5.5px;color:#22c55e;font-weight:700;letter-spacing:.2px">LOCAL</span>
+      </div>
+      <!-- center label -->
+      <span style="font-size:4.5px;color:#ccc;letter-spacing:.3px">swipe up</span>
+      <!-- DUO counter — tap → DUO feed -->
+      <div style="display:flex;align-items:center;gap:3px">
+        <span style="font-size:5.5px;color:#3b82f6;font-weight:700;letter-spacing:.2px">DUO</span>
+        <span style="font-size:8.5px;font-weight:700;color:#1a1a1a">38</span>
+        <div style="width:7px;height:7px;border-radius:2px;background:#3b82f6;flex-shrink:0"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bnav">
+    <div class="ni"><div class="nic nr non"></div><div class="nil on">Map</div></div>
+    <div class="ni"><div class="nic"></div><div class="nil">Search</div></div>
+    <div class="ni"><div class="nic"></div><div class="nil">Chat</div></div>
+    <div class="ni"><div class="nic nr"></div><div class="nil">Profile</div></div>
   </div>
 </div></div>
 
@@ -214,8 +266,9 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
     </div>
   </div>
 </div>
-<div class="xnote">🇹🇳 flag → International DUO feed</div>
-<div class="xnote" style="margin-top:2px">Log In → see Flow 4 (100)</div>
+<div class="xnote">🇹🇳 flag → Intl DUO feed (browse only)</div>
+<div class="xnote" style="margin-top:2px">Also reachable: create DUO → pick foreign zone</div>
+<div class="xnote" style="margin-top:2px">Log In → see Flow 5 (100)</div>
 </div>
 
 <!-- 003 — UNIFIED FEED (all bright) -->
@@ -248,9 +301,9 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
     <!-- LOCAL — green left border -->
     <div id="q003c" class="card cl"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div></div>
     <!-- DUO — blue left border + A↔B row -->
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Tunis</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Sfax</div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Tunis</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#3b82f6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Sfax</span><span style="font-size:4px;color:#888">Sfax Gov.</span></div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
     <!-- LOCAL — green left border -->
-    <div class="card cl"><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text slide</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Menzah 5</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text slide</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
   </div>
   <div id="q003f" class="fab">+</div>
   <div class="bnav">
@@ -292,9 +345,9 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
   </div>
   <div class="body" style="gap:3px;overflow:hidden">
     <!-- DUO only — blue border + A↔B rows -->
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Tunis</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Sfax</div></div><div class="ln lnd w60"></div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Ariana</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">La Marsa</div></div><div class="ph phsm"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Menzah</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Lac 2</div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Tunis</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#3b82f6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Sfax</span><span style="font-size:4px;color:#888">Sfax Gov.</span></div></div><div class="ln lnd w60"></div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Ariana</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#8b5cf6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">La Marsa</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div></div><div class="ph phsm"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Menzah</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#8b5cf6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Lac 2</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
   </div>
   <div class="fab">+</div>
   <div class="bnav">
@@ -332,9 +385,9 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
   </div>
   <div class="body" style="gap:3px;overflow:hidden">
     <!-- LOCAL only — green border -->
-    <div class="card cl"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cl"><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text slide</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cl"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Ariana</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Menzah 5</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text slide</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Ariana</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
   </div>
   <div class="fab">+</div>
   <div class="bnav">
@@ -395,10 +448,10 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
   </div>
   <div class="body" style="gap:3px;overflow:hidden">
     <div class="t" style="font-size:5px;color:#aaa;padding:1px 0">All ads — sorted by time</div>
-    <div class="card cl"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Tunis</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Sfax</div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cl"><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Ariana</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Lac 2</div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Ariana</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Tunis</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#3b82f6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Sfax</span><span style="font-size:4px;color:#888">Sfax Gov.</span></div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">El Mourouj</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Ben Arous Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Ariana</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#8b5cf6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Lac 2</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
   </div>
   <div class="bnav">
     <div class="ni"><div class="nic nr non"></div><div class="nil">Map</div></div>
@@ -432,9 +485,9 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
   </div>
   <div class="body" style="gap:3px;overflow:hidden">
     <div class="t" style="font-size:5px;color:#22c55e;padding:1px 0;font-weight:600">LOCAL ads only</div>
-    <div class="card cl"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cl"><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cl"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Ariana</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">El Mourouj</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Ben Arous Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Ariana</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
   </div>
   <div class="bnav">
     <div class="ni"><div class="nic nr non"></div><div class="nil">Map</div></div>
@@ -469,9 +522,9 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
   </div>
   <div class="body" style="gap:3px;overflow:hidden">
     <div class="t" style="font-size:5px;color:#3b82f6;padding:1px 0;font-weight:600">DUO ads only</div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Tunis</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Sfax</div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cs"><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Ariana</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Lac 2</div></div><div class="ph phsm"></div></div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Menzah</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">La Marsa</div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Tunis</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#3b82f6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Sfax</span><span style="font-size:4px;color:#888">Sfax Gov.</span></div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Ariana</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#8b5cf6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Lac 2</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div></div><div class="ph phsm"></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Menzah</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#8b5cf6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">La Marsa</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
   </div>
   <div class="bnav">
     <div class="ni"><div class="nic nr non"></div><div class="nil">Map</div></div>
@@ -506,10 +559,10 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
   </div>
   <div class="body" style="gap:3px;overflow:hidden">
     <div class="t" style="font-size:5px;color:#aaa;padding:1px 0">All ads restored</div>
-    <div class="card cl"><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Tunis</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Sfax</div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cl"><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
-    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;gap:3px"><div class="t td" style="font-size:5px">Ariana</div><div class="t" style="font-size:5px">⟷</div><div class="t td" style="font-size:5px">Lac 2</div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">Ariana</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Tunis Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w80"></div><div class="ph phmd"></div><div class="ln w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#93c5fd;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">ZONE DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Tunis</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#3b82f6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Sfax</span><span style="font-size:4px;color:#888">Sfax Gov.</span></div></div><div class="ln lnd w50"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cl"><div style="display:flex;align-items:center;gap:2px;margin-bottom:3px"><span style="font-size:5px;font-weight:700;color:#1a1a1a">El Mourouj</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4.5px;color:#666">Ben Arous Gov.</span><span style="font-size:4px;color:#ddd">›</span><span style="font-size:4px;color:#bbb">Tunisia</span></div><div class="ln lnd w60"></div><div class="ph phsm" style="background:#f5f5f5;border-style:dashed;color:#ccc;font-size:5px">text</div><div class="ln w40"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#22c55e;font-weight:600">✆ Contact Advertiser</span></div></div>
+    <div class="card cs"><div style="display:flex;align-items:center;gap:3px;margin-bottom:2px"><div style="font-size:4px;font-weight:700;color:#a78bfa;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:2px;padding:1px 3px;flex-shrink:0">MINI DUO</div></div><div style="display:flex;align-items:flex-start;gap:4px;margin-bottom:3px"><div style="flex:1"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Ariana</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div><span style="font-size:8px;color:#8b5cf6;flex-shrink:0;padding-top:1px">⟷</span><div style="flex:1;text-align:right"><span style="font-size:5.5px;font-weight:700;color:#1a1a1a;display:block">Lac 2</span><span style="font-size:4px;color:#888">Tunis Gov.</span></div></div><div class="ln lnd w60"></div><div style="border-top:1px solid #e8eaed;margin-top:3px;padding-top:3px;display:flex;align-items:center;justify-content:center;gap:3px"><span style="font-size:5px;color:#3b82f6;font-weight:600">✆ Contact Advertiser</span></div></div>
   </div>
   <div class="bnav">
     <div class="ni"><div class="nic nr non"></div><div class="nil">Map</div></div>
@@ -604,7 +657,7 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
      FLOW 4 — INTERNATIONAL DUO FEED
 ══════════════════════════════════════ -->
 <div class="section">
-<div class="slbl">Flow 4 — International DUO Feed &nbsp;·&nbsp; Entry: 🇹🇳 flag in burger menu · Cross-border ads only</div>
+<div class="slbl">Flow 4 — International DUO Feed &nbsp;·&nbsp; Entry 1: 🇹🇳 flag in burger menu · Entry 2: main DUO create flow when zones cross borders</div>
 <div class="row" id="r4i">
 <svg class="row-svg" id="s4i"></svg>
 
@@ -946,7 +999,7 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
      FLOW 7a — DUO LEVELS REFERENCE
 ══════════════════════════════════════ -->
 <div class="section">
-<div class="slbl">Flow 7a — DUO Levels Reference &nbsp;·&nbsp; All 3 corridor preview variants side-by-side</div>
+<div class="slbl">Flow 7a — DUO Levels Reference &nbsp;·&nbsp; All 3 corridor preview variants · INTL DUO reachable from both Flow 4 (flag) and Flow 7 (auto-detect)</div>
 <div class="row" id="r7a">
 <svg class="row-svg" id="s7a"></svg>
 
@@ -1059,7 +1112,8 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
   <div class="fb"><div class="btn bf" style="font-size:6px">Next: Post Type →</div></div>
 </div>
 <div class="xnote">Zone A and B in different countries</div>
-<div class="xnote" style="margin-top:2px">Entry: burger menu 🇹🇳 flag (Flow 4)</div>
+<div class="xnote" style="margin-top:2px">Entry 1: burger menu 🇹🇳 flag → Flow 4</div>
+<div class="xnote" style="margin-top:2px">Entry 2: main DUO create → pick cross-border zones</div>
 </div>
 
 </div><!-- /r7a -->
@@ -1069,7 +1123,7 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
      FLOW 7 — CREATE DUO AD
 ══════════════════════════════════════ -->
 <div class="section">
-<div class="slbl">Flow 7 — Create DUO Ad &nbsp;·&nbsp; 3 levels auto-detected from zone selection: Zone DUO · Mini DUO · Intl DUO</div>
+<div class="slbl">Flow 7 — Create DUO Ad &nbsp;·&nbsp; Level auto-detected · Zone DUO · Mini DUO · INTL DUO (also via burger 🇹🇳 flag)</div>
 <div class="row" id="r5">
 <svg class="row-svg" id="s5"></svg>
 
@@ -1091,9 +1145,9 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
         <div style="font-size:5px;color:#bbb">MINI</div>
         <div style="font-size:4px;color:#ccc">delegation</div>
       </div>
-      <div style="flex:1;border:1px solid #dde0e5;border-radius:4px;padding:3px;text-align:center">
-        <div style="font-size:5px;color:#bbb">INTL</div>
-        <div style="font-size:4px;color:#ccc">cross-border</div>
+      <div style="flex:1;border:1px solid #22c55e;border-radius:4px;padding:3px;text-align:center;background:#f0fdf4">
+        <div style="font-size:5px;font-weight:700;color:#22c55e">INTL</div>
+        <div style="font-size:4px;color:#86efac">cross-border</div>
       </div>
     </div>
     <div class="ph phmap" style="flex:1"><div class="pin" style="top:42%;left:38%"></div><div class="pl" style="top:22%;left:30%">A: ?</div><div class="ml">tap to pin Zone A</div></div>
@@ -1150,6 +1204,7 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
     </div>
     <div class="ph phmap" style="flex:1;position:relative"><div class="pin" style="top:22%;left:15%"></div><div class="pl" style="top:10%;left:5%">Sidi Bouzid</div><div class="pin" style="top:55%;left:62%"></div><div class="pl" style="top:44%;left:64%">Sousse</div><div class="co" style="top:27%;left:22%;width:42%;transform:rotate(22deg)"></div><div class="ml">corridor auto-drawn</div></div>
     <div class="t tc ti" style="font-size:4.5px">Visible in both governorates + corridor zones</div>
+    <div class="t tc" style="font-size:4px;color:#bbb;margin-top:1px">If zones = different countries → auto upgrades to INTL DUO</div>
   </div>
   <div class="fb"><div id="q302n" class="btn bf">Next: Post Type →</div></div>
 </div></div>
@@ -2171,13 +2226,15 @@ body{background:#e9ebee;font-family:-apple-system,BlinkMacSystemFont,'Helvetica 
 const FLOWS = [
   // ── Flow 1 ──
   { row:'r1', svg:'s1', arrows:[
-    { from:'p000',  to:'p001', type:'fwd',  lb:'auto 2s',   anchor:'mid' },
-    { from:'q001h', to:'p002', type:'fwd',  lb:'hamburger', anchor:'mid' },
-    { from:'q001f',    to:'p003', type:'fwd',  lb:'FEED',        anchor:'mid' },
-    { from:'q002flag', to:'pi1',  type:'fwd',  lb:'flag → Intl', anchor:'mid' },
-    { from:'q003c', to:'p004', type:'fwd',  lb:'tap post',  anchor:'mid' },
-    { from:'q003b', to:'p001', type:'back', lb:'back' },
-    { from:'q001s', to:'p006', type:'fwd',  lb:'search',    anchor:'mid' },
+    { from:'p000',      to:'p001', type:'fwd',     lb:'auto 2s'          },
+    { from:'q001h',     to:'p002', type:'fwd',     lb:'hamburger'        },
+    { from:'q001s',     to:'p006', type:'fwd',     lb:'search'           },
+    { from:'q001heart', to:'p001', type:'back',    lb:'♡ save zone'      },
+    { from:'q001f',     to:'p003', type:'btn-fwd', lb:'swipe ↑ / counters → feed' },
+    { from:'q003c',     to:'p004', type:'fwd',     lb:'tap post'         },
+    { from:'q003b',     to:'p001', type:'back',    lb:'back'             },
+    { from:'q002g',     to:'p100', type:'fwd',     lb:'login'            },
+    { from:'q002flag',  to:'pi1',  type:'fwd',     lb:'flag → Intl'      },
   ]},
   // ── Flow 2 — Feed Filter ──
   // ALL forward arrows route below the phones — zero arrows cross any phone body.
